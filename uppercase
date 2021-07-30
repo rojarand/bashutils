@@ -1,0 +1,8 @@
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | awk '{print toupper($0)}')
+printf "$res\n"
