@@ -1,0 +1,18 @@
+#!/bin/sh
+# Camel case input string
+
+# Example 1. Camel case a string.
+# $ echo "foo_bar" | camelcase
+# output: FooBar
+
+# Example 2: Camel case all lines in a file
+# cat file.txt | xargs -I {} camelcase {}
+
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g')
+printf "$res\n"
