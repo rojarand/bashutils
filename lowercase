@@ -1,0 +1,16 @@
+# Lowercase input string
+
+# Example 1. Lowercase a string.
+# $ echo "Foo" | lowercase
+
+# Example 2: Lowercase all lines in a file
+# cat file.txt | xargs -I {} lowercase {}
+
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | awk '{print tolower($0)}')
+printf "$res\n"
