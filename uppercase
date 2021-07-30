@@ -1,3 +1,11 @@
+# Uppercase input string
+
+# Example 1. Uppercase a string.
+# $ echo "Foo" | uppercase
+
+# Example 2: Uppercase all lines in a file
+# cat file.txt | xargs -I {} uppercase {}
+
 if [ -z "$1" ]
     then
         read arg
