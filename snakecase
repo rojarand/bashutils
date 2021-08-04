@@ -1,0 +1,18 @@
+#!/bin/sh
+# Snake case input string
+
+# Example 1. Snake case a string.
+# $ echo "FooBar" | snakecase
+# output: foo_bar
+
+# Example 2: Snake case all lines in a file
+# cat file.txt | xargs -I {} snakecase {}
+
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[:upper:]' '[:lower:]')
+printf "$res\n"
