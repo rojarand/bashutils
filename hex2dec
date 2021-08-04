@@ -1,0 +1,11 @@
+#!/bin/sh
+# Change hex to dec
+
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | uppercase | awk '{ print "echo \"ibase=16;"$1"\" | bc"}' | sh)
+printf "$res\n"
