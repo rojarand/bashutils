@@ -1,0 +1,11 @@
+#!/bin/sh
+# Replace space, dash iccurences with underscore
+
+if [ -z "$1" ]
+    then
+        read arg
+    else
+        arg=$1
+fi
+res=$(echo $arg | sed 's/ /_/g' | sed 's/-/_/g' )
+printf "$res\n"
