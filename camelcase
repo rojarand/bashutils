@@ -14,5 +14,5 @@ if [ -z "$1" ]
     else
         arg=$1
 fi
-res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g')
+res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | sed 's/.*/\l&/' )
 printf "$res\n"
