@@ -14,5 +14,5 @@ if [ -z "$1" ]
     else
         arg=$1
 fi
-res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | sed 's/.*/\l&/' )
+res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | awk '{print tolower(substr($0,1,1))substr($0,2)}' )
 printf "$res\n"
