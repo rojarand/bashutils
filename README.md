@@ -1,9 +1,7 @@
 ## Bashutils
-`Bashutils` is a collection of bash scripts designed to speed up interaction with the console and improve productivity.
+`Bashutils` is a collection of bash scripts designed to speed up interaction with the console and improve productivity. Main focus of `Bashutils` is text processing. 
 
-### Motivation
-
-`Bashutils` helps facilitate text processing. For example, if you want to convert all the letters in your message to lowercase and replace all spaces with underscore, you can write:
+For example, if you want to convert all the letters in your message to lowercase and replace all spaces with underscore, you can write:
 ```bash
 $ echo "TEXT OF A MESSAGE" | awk '{print tolower($0)}' | sed 's/ /_/g' 
 ```
