@@ -3,14 +3,20 @@
 # Example 1. Uppercase a string.
 # $ echo "Foo" | uppercase
 
-# Example 2: Uppercase all lines in a file
-# cat file.txt | xargs -I {} uppercase {}
+# Example 2. Uppercase a string.
+# $ uppercase "Foo" 
 
-if [ -z "$1" ]
+# Example 3: Uppercase all lines in a file
+# cat file.txt | uppercase
+
+
+_uppercase() {
+	echo $1 | awk '{print toupper($0)}'
+}
+
+if test -n "$1";
     then
-        read arg
+	_uppercase "$1"
     else
-        arg=$1
+        while read arg; do _uppercase "$arg"; done;
 fi
-res=$(echo $arg | awk '{print toupper($0)}')
-printf "$res\n"

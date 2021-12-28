@@ -1,11 +1,14 @@
 #!/bin/sh
 # Change dec to hex
 
-if [ -z "$1" ]
+_dec2hex() {
+	echo "ibase=10;obase=16;$1" | bc
+}
+
+if test -n "$1";
     then
-        read arg
+        _dec2hex "$1"
     else
-        arg=$1
+        while read arg; do _dec2hex "$arg"; done;
 fi
-res=$(echo "ibase=10;obase=16;$arg" | bc)
-printf "$res\n"
+

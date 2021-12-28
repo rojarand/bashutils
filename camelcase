@@ -6,13 +6,16 @@
 # output: FooBar
 
 # Example 2: Camel case all lines in a file
-# cat file.txt | xargs -I {} camelcase {}
+# cat file.txt | camelcase 
 
-if [ -z "$1" ]
+_camelcase() {
+        echo $1 | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | sed 's/.*/\l&/'
+}
+
+if test -n "$1";
     then
-        read arg
+        _camelcase "$1"
     else
-        arg=$1
+        while read arg; do _camelcase "$arg"; done;
 fi
-res=$(echo $arg | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | awk '{print tolower(substr($0,1,1))substr($0,2)}' )
-printf "$res\n"
+

@@ -6,13 +6,16 @@
 # output: foo_bar
 
 # Example 2: Snake case all lines in a file
-# cat file.txt | xargs -I {} snakecase {}
+# cat file.txt | snakecase 
 
-if [ -z "$1" ]
+_snakecase() {
+        echo $1 | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[:upper:]' '[:lower:]'
+}
+
+if test -n "$1";
     then
-        read arg
+        _snakecase "$1"
     else
-        arg=$1
+        while read arg; do _snakecase "$arg"; done;
 fi
-res=$(echo $arg | sed 's/\(.\)\([A-Z]\)/\1_\2/g' | tr '[:upper:]' '[:lower:]')
-printf "$res\n"
+

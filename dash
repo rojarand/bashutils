@@ -1,11 +1,14 @@
 #!/bin/sh
 # Replace space, underscore with dash
 
-if [ -z "$1" ]
+_dash() {
+        echo $1 | sed 's/ /-/g' | sed 's/_/-/g' 
+}
+
+if test -n "$1";
     then
-        read arg
+        _dash "$1"
     else
-        arg=$1
+        while read arg; do _dash "$arg"; done;
 fi
-res=$(echo $arg | sed 's/ /-/g' | sed 's/_/-/g' )
-printf "$res\n"
+

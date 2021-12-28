@@ -1,11 +1,14 @@
 #!/bin/sh
 # Change hex to dec
 
-if [ -z "$1" ]
+_hex2dec() {
+        echo $1 | awk '{print toupper($0)}' | awk '{ print "echo \"ibase=16;"$1"\" | bc"}' | sh
+}
+
+if test -n "$1";
     then
-        read arg
+        _hex2dec "$1"
     else
-        arg=$1
+        while read arg; do _hex2dec "$arg"; done;
 fi
-res=$(echo $arg | awk '{print toupper($0)}' | awk '{ print "echo \"ibase=16;"$1"\" | bc"}' | sh)
-printf "$res\n"
+
