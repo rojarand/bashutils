@@ -1,0 +1,21 @@
+#!/bin/sh
+# Pascal case input string
+
+# Example 1. Pascal case a string.
+# $ echo "foo_bar" | pascalcase
+# output: FooBar
+
+# Example 2: Pascal case all lines in a file
+# cat file.txt | pascalcase 
+
+_pascalcase() {
+        echo $1 | perl -pe 's/(^|_)./uc($&)/ge;s/_//g'
+}
+
+if test -n "$1";
+    then
+        _pascalcase "$1"
+    else
+        while read arg; do _pascalcase "$arg"; done;
+fi
+
