@@ -30,6 +30,12 @@ $ camelcase "foo_bar"
 fooBar
 ```
 
+- pascalcase - Converts snakecase notation to pascalcase 
+```bash
+$ pascalcase "foo_bar"
+FooBar
+```
+
 - snakecase - Converts camelcase notation to snakecase
 ```bash
 $ camelcase "fooBar"
@@ -87,11 +93,11 @@ $ hex2dec FFFF
 	export PATH="/path/to/download/dir/bashutils:$PATH"
 	```
 	Usually path to the startup script file is:
-	- ~/.bash_profile on MacOS
-	- ~/.bashrc on Debian/Ubuntu based systems
-	for other system refers to its manual.
+	- ~/.bash_profile on MacOS,
+	- ~/.bashrc on Debian/Ubuntu based systems,
+	- For other system refers to its manuals.
 
-- Reopen terminals or reload configuration
+- Reopen terminal or reload configuration
 
 The `bashutils` scripts should be ready for use.
 
