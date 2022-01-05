@@ -9,7 +9,7 @@
 # cat file.txt | camelcase 
 
 _camelcase() {
-        echo $1 | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | sed 's/.*/\l&/'
+	echo $1 | perl -pe 's/(^|_)./uc($&)/ge;s/_//g' | awk '{$1=tolower(substr($1,1,1))substr($1,2)}1'
 }
 
 if test -n "$1";
