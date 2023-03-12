@@ -86,7 +86,7 @@ $ hex2dec FFFF
 
 ### Installation
 - Clone/download `bashutils` to a directory. 
-- Update system PATH variable to point to the `bashutiils` directory.
+- Update system PATH variable to point to the `bashutils` directory.
 
 	Edit bash startup configuration script file and add following change to the end of the file:
 	```console
